@@ -43,11 +43,11 @@ function Index() {
   };
 
   const handleMenuClick = (type: string) => {
-    Toast.show(`点击了${type}`, {});
+    Toast.show("index-toast", { content: `点击了${type}` });
   };
 
   const handleHouseClick = () => {
-    Toast.show("查看房源详情", {});
+    Toast.show("index-toast", { content: "查看房源详情" });
   };
 
   const menuItems = [
@@ -70,6 +70,7 @@ function Index() {
 
   return (
     <ConfigProvider locale={zhCN}>
+      <Toast id="index-toast" />
       <ScrollView className="index-container" scrollY>
         {/* 顶部区域 */}
         <View className="header-section">

@@ -12,11 +12,11 @@ function Login() {
   const handleLogin = () => {
     // 验证输入
     if (!username.trim()) {
-      Toast.show("请输入用户名");
+      Toast.show("login-toast", { content: "请输入用户名" });
       return;
     }
     if (!password.trim()) {
-      Toast.show("请输入密码");
+      Toast.show("login-toast", { content: "请输入密码" });
       return;
     }
 
@@ -26,9 +26,9 @@ function Login() {
       Taro.setStorageSync("isLogin", true);
       Taro.setStorageSync("userInfo", { username });
 
-      Toast.show({
+      Toast.show("login-toast", {
         content: "登录成功！",
-        icon: "success",
+        type: "success",
         onClose: () => {
           // 跳转到首页
           Taro.redirectTo({
@@ -37,9 +37,9 @@ function Login() {
         },
       });
     } else {
-      Toast.show({
+      Toast.show("login-toast", {
         content: "用户名或密码错误",
-        icon: "fail",
+        type: "fail",
       });
     }
   };
@@ -53,6 +53,7 @@ function Login() {
 
   return (
     <ConfigProvider locale={zhCN}>
+      <Toast id="login-toast" />
       <View className="login-container">
         {/* 顶部装饰区域 */}
         <View className="login-header">
@@ -67,8 +68,10 @@ function Login() {
         {/* 登录表单区域 */}
         <View className="login-form">
           <View className="form-title">
-            <Text className="title-text">欢迎登录</Text>
-            <Text className="subtitle-text">房屋租赁平台</Text>
+            <Text className="title-text text-primary">欢迎登录</Text>
+            <Text className="subtitle-text" style={{ color: "red" }}>
+              房屋租赁平台
+            </Text>
           </View>
 
           <View className="form-content">

@@ -32,12 +32,12 @@ function Register() {
 
   const handleGetCode = () => {
     if (!formData.phone.trim()) {
-      Toast.show("请输入手机号");
+      Toast.show("register-toast", { content: "请输入手机号" });
       return;
     }
 
     if (!/^1[3-9]\d{9}$/.test(formData.phone)) {
-      Toast.show("请输入正确的手机号");
+      Toast.show("register-toast", { content: "请输入正确的手机号" });
       return;
     }
 
@@ -57,48 +57,48 @@ function Register() {
       }
     }, 1000);
 
-    Toast.show("验证码已发送");
+    Toast.show("register-toast", { content: "验证码已发送" });
   };
 
   const handleRegister = () => {
     // 表单验证
     if (!formData.username.trim()) {
-      Toast.show("请输入用户名");
+      Toast.show("register-toast", { content: "请输入用户名" });
       return;
     }
     if (!formData.phone.trim()) {
-      Toast.show("请输入手机号");
+      Toast.show("register-toast", { content: "请输入手机号" });
       return;
     }
     if (!/^1[3-9]\d{9}$/.test(formData.phone)) {
-      Toast.show("请输入正确的手机号");
+      Toast.show("register-toast", { content: "请输入正确的手机号" });
       return;
     }
     if (!formData.verifyCode.trim()) {
-      Toast.show("请输入验证码");
+      Toast.show("register-toast", { content: "请输入验证码" });
       return;
     }
     if (!formData.password.trim()) {
-      Toast.show("请输入密码");
+      Toast.show("register-toast", { content: "请输入密码" });
       return;
     }
     if (formData.password.length < 6) {
-      Toast.show("密码长度不能少于6位");
+      Toast.show("register-toast", { content: "密码长度不能少于6位" });
       return;
     }
     if (formData.password !== formData.confirmPassword) {
-      Toast.show("两次输入的密码不一致");
+      Toast.show("register-toast", { content: "两次输入的密码不一致" });
       return;
     }
     if (!agreed) {
-      Toast.show("请阅读并同意用户协议");
+      Toast.show("register-toast", { content: "请阅读并同意用户协议" });
       return;
     }
 
     // 模拟注册
-    Toast.show({
+    Toast.show("register-toast", {
       content: "注册成功！",
-      icon: "success",
+      type: "success",
       onClose: () => {
         // 跳转到登录页
         Taro.navigateBack();
@@ -112,6 +112,7 @@ function Register() {
 
   return (
     <ConfigProvider locale={zhCN}>
+      <Toast id="register-toast" />
       <View className="register-container">
         {/* 顶部区域 */}
         <View className="register-header">

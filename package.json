@@ -11,6 +11,8 @@
   },
   "scripts": {
     "build:weapp": "taro build --type weapp",
+    "build:weapp:open": "npm run build:weapp && npm run open:weapp",
+    "open:weapp": "node scripts/open-weapp.js",
     "build:swan": "taro build --type swan",
     "build:alipay": "taro build --type alipay",
     "build:tt": "taro build --type tt",

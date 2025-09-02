@@ -1,33 +1,56 @@
-/* Tailwind CSS 基础样式 */
-@tailwind base;
+/* 小程序兼容的 Tailwind CSS */
+/* 只导入 components 和 utilities，避免 base 中的不兼容样式 */
 @tailwind components;
 @tailwind utilities;
 
-/* Taro 兼容性调整 */
-@layer base {
-  /* 小程序兼容性 */
-  page {
-    font-family: PingFang SC, Helvetica Neue, Helvetica, Arial, sans-serif;
-  }
+/* 手动添加必要的基础样式 - 不使用 @layer */
+page {
+  font-family: PingFang SC, Helvetica Neue, Helvetica, Arial, sans-serif;
+  background-color: #f8f9fa;
+  line-height: 1.5;
+}
+
+/* 重置基本样式 - 小程序兼容 */
+view,
+text,
+button,
+input,
+textarea {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 @layer components {
-  /* 自定义组件样式 */
+  /* 自定义组件样式 - 兼容小程序 */
   .btn-primary {
-    @apply px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors;
+    padding: 8rpx 16rpx;
+    background-color: #3b82f6;
+    color: #ffffff;
+    border-radius: 8rpx;
+    border: none;
+    transition: background-color 0.3s ease;
+  }
+
+  .btn-primary:hover {
+    background-color: #2563eb;
   }
 
   .card {
-    @apply p-4 bg-white rounded-lg shadow-md;
+    padding: 32rpx;
+    background-color: #ffffff;
+    border-radius: 16rpx;
+    box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
   }
 }
 
 @layer utilities {
-  /* 自定义工具类 */
-  .text-gradient {
-    background: linear-gradient(45deg, #3b82f6, #8b5cf6);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  /* 安全区域适配 */
+  .safe-area-top {
+    padding-top: env(safe-area-inset-top, 0rpx);
+  }
+
+  .safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 0rpx);
   }
 }
