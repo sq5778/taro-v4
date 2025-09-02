@@ -1,4 +1,4 @@
-export default defineAppConfig({
+export default {
   pages: ["pages/login/index", "pages/index/index", "pages/register/index"],
   window: {
     backgroundTextStyle: "light",
@@ -6,4 +6,4 @@ export default defineAppConfig({
     navigationBarTitleText: "房屋租赁平台",
     navigationBarTextStyle: "black",
   },
-});
+};
