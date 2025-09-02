@@ -1,0 +1,33 @@
+/* Tailwind CSS 基础样式 */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Taro 兼容性调整 */
+@layer base {
+  /* 小程序兼容性 */
+  page {
+    font-family: PingFang SC, Helvetica Neue, Helvetica, Arial, sans-serif;
+  }
+}
+
+@layer components {
+  /* 自定义组件样式 */
+  .btn-primary {
+    @apply px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors;
+  }
+
+  .card {
+    @apply p-4 bg-white rounded-lg shadow-md;
+  }
+}
+
+@layer utilities {
+  /* 自定义工具类 */
+  .text-gradient {
+    background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
